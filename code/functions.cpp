@@ -1,6 +1,11 @@
 #include "functions.h"
 
 
+void printInfoBeforeTable(double a, double b, const char *text, double eps) {
+    std::cout << "\t\tТаблица рассчёта интеграла" << std::endl;
+    std::cout << "\t от " << a << " до " << b << " с точностью до " << std::scientific << eps << ' ' << text << std::endl;
+}
+
 void PrintTabl(I_print i_prn[], int k) {
     const int m = 4;
     int wn[m] = {16, 18, 18, 10};
@@ -69,6 +74,7 @@ double f3ExactValue(double a, double b) {
 double f4ExactValue(double a, double b) {
     return b * atan(b) - a * atan(a) - (log(b * b + 1) - log(a * a + 1)) / 2.0;
 }
+
 
 I_print IntRect(TPF funq, TPFEV exFunq, double a, double b, double eps, char *functionName) {
     I_print result = {};

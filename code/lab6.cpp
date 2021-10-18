@@ -10,6 +10,7 @@ int main() {
         printInfo[2] = IntRect(f3, f3ExactValue, VAL_A, VAL_B, eps, f3Name);
         printInfo[3] = IntRect(f4, f4ExactValue, VAL_A, VAL_B, eps, f4Name);
         eps *= 0.1;
+        printInfoBeforeTable(VAL_A, VAL_B, textRect, eps);
         PrintTabl(printInfo, printInfoSize);
     }
     eps = 0.01;
@@ -19,6 +20,7 @@ int main() {
         printInfo[2] = IntTrap(f3, f3ExactValue, VAL_A, VAL_B, eps, f3Name);
         printInfo[3] = IntTrap(f4, f4ExactValue, VAL_A, VAL_B, eps, f4Name);
         eps *= 0.1;
+        printInfoBeforeTable(VAL_A, VAL_B, textTrap, eps);
         PrintTabl(printInfo, printInfoSize);
     }
 

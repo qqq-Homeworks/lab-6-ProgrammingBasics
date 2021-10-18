@@ -13,6 +13,9 @@
 #define f3Name "y = x^4 "
 #define f4Name "y = arctg(x)"
 
+#define textRect "методом прямоугольников"
+#define textTrap "методом трапеций"
+
 #define printInfoSize 4
 
 
@@ -31,6 +34,8 @@ struct I_print {                  //данные для печати резул�
     double i_toch; //точное значение интеграла
     int n;         //число разбиений области интегрирования, при котором достигнута требуемая точность
 };
+
+void printInfoBeforeTable(double, double, const char*, double);
 
 void PrintTabl(I_print i_prn[], int k);
 
