@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/qqq/Documents/University/1 course/ 1 term/programming basics/labs/6 lab/code/functions.cpp
+functions.h
+/Users/qqq/Documents/University/1 course/ 1 term/programming basics/labs/6 lab/code/functions.h
+
+/Users/qqq/Documents/University/1 course/ 1 term/programming basics/labs/6 lab/code/functions.h
+cmath
+-
+iostream
+-
+iomanip
+-
+cstring
+-
+
