@@ -17,33 +17,33 @@ double f4(double x) {
     return atan(x);
 }
 
-double f1ExactValue(double a, double b) {
-    return (b * b - a * a) / 2.0;
+double f1ExactValue() {
+    return (VAL_B * VAL_B - VAL_A * VAL_A) / 2.0;
 }
 
-double f2ExactValue(double a, double b) {
-    return (cos(a * 22.0) - cos(b * 22.0)) / 22.0;
+double f2ExactValue() {
+    return (cos(VAL_A * 22.0) - cos(VAL_B * 22.0)) / 22.0;
 }
 
-double f3ExactValue(double a, double b) {
-    return (b * b * b * b * b - a * a * a * a * a) / 5.0;
+double f3ExactValue() {
+    return (VAL_B * VAL_B * VAL_B * VAL_B * VAL_B - VAL_A * VAL_A * VAL_A * VAL_A * VAL_A) / 5.0;
 }
 
-double f4ExactValue(double a, double b) {
-    return b * atan(b) - a * atan(a) - (log(b * b + 1) - log(a * a + 1)) / 2.0;
+double f4ExactValue() {
+    return VAL_B * atan((double)VAL_B) - VAL_A * atan((double)VAL_A) - (log(VAL_B * VAL_B + 1) - log(VAL_A * VAL_A + 1)) / 2.0;
 }
 
-I_print IntRect(TPF funq, TPFEV exFunq, double a, double b, double eps, char *functionName) {
+I_print IntRect(TPF funq, TPFEV exFunq, double eps, char *functionName) {
     I_print result = {};
     result.name = functionName;
-    result.i_toch = exFunq(a, b);
+    result.i_toch = exFunq();
 
-    double delX = (b - a) / 2.0;
+    double delX = (VAL_B - VAL_A) / 2.0;
     double x;
     double f1, f2, s1, s2;
     int n = 2;
     do {
-        x = a;
+        x = VAL_A;
         s1 = 0;
         s2 = 0;
         for (int i = 0; i < n - 1; i++) {
@@ -61,16 +61,16 @@ I_print IntRect(TPF funq, TPFEV exFunq, double a, double b, double eps, char *fu
     return result;
 }
 
-I_print IntTrap(TPF funq, TPFEV exFunq, double a, double b, double eps, char *functionName) {
+I_print IntTrap(TPF funq, TPFEV exFunq, double eps, char *functionName) {
     I_print result = {};
     result.name = functionName;
-    result.i_toch = exFunq(a, b);
-    double delX = (double) b - a;
+    result.i_toch = exFunq();
+    double delX = (double) VAL_B - VAL_A;
     double x;
-    double s1 = ((funq(a) + funq(b)) / 2) * (b - a), s2 = s1;
+    double s1 = ((funq(VAL_A) + funq(VAL_B)) / 2) * (VAL_B - VAL_A), s2 = s1;
     int n = 1;
     do {
-        x = a;
+        x = VAL_A;
         s1 = s2;
         s2 = 0;
         n *= 2;
@@ -86,9 +86,9 @@ I_print IntTrap(TPF funq, TPFEV exFunq, double a, double b, double eps, char *fu
     return result;
 }
 
-void printInfoBeforeTable(double a, double b, const char *text, double eps) {
+void printInfoBeforeTable(const char *text, double eps) {
     std::cout << "\t\tТаблица рассчёта интеграла" << std::endl;
-    std::cout << "\t от " << a << " до " << b << " с точностью до " << std::scientific << eps << ' ' << text << std::endl;
+    std::cout << "\t от " << VAL_A << " до " << VAL_B << " с точностью до " << std::scientific << eps << ' ' << text << std::endl;
 }
 
 void PrintTabl(I_print i_prn[], int k) {

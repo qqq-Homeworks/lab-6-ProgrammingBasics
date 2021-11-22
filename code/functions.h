@@ -16,7 +16,7 @@
 
 typedef double(*TPF)(double);
 
-typedef double(*TPFEV)(double, double);
+typedef double(*TPFEV)();
 
 enum ABValues {
     VAL_A = 0,
@@ -30,21 +30,21 @@ struct I_print {                  //данные для печати резул�
     int n;         //число разбиений области интегрирования, при котором достигнута требуемая точность
 };
 
-void printInfoBeforeTable(double, double, const char*, double);
+void printInfoBeforeTable(const char*, double);
 
 void PrintTabl(I_print i_prn[], int k);
 
-I_print IntRect(TPF, TPFEV, double, double, double, char *);
+I_print IntRect(TPF, TPFEV,  double, char *);
 
-I_print IntTrap(TPF, TPFEV, double, double, double, char *);
+I_print IntTrap(TPF, TPFEV, double, char *);
 
-double f1ExactValue(double, double);
+double f1ExactValue();
 
-double f2ExactValue(double, double);
+double f2ExactValue();
 
-double f3ExactValue(double, double);
+double f3ExactValue();
 
-double f4ExactValue(double, double);
+double f4ExactValue();
 
 double f1(double);
 
