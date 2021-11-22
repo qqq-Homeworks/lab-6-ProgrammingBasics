@@ -3,11 +3,6 @@
 #include <iomanip>
 #include <cstring>
 
-#define EPS_2  0.01
-#define EPS_3  0.001
-#define EPS_4  0.0001
-#define EPS_5  0.00001
-
 #define f1Name "y = x "
 #define f2Name "y = sin(22x)"
 #define f3Name "y = x^4 "
@@ -58,6 +53,3 @@ double f2(double);
 double f3(double);
 
 double f4(double);
-
-
-
