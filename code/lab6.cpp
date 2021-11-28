@@ -8,11 +8,19 @@ int main() {
     char* functionsNames[] = {f1Name,f2Name,f3Name,f4Name};
 
     double eps = 0.01;
+    
+for (size_t i = 0; i < printInfoSize; i++)
+{
+    printInfo[i].name = functionsNames[i];
+    printInfo[i].i_toch = functionsExactValues[i]();
+}
+int n;
 
     while (eps > 0.000001) {
         for (size_t i = 0; i < printInfoSize; i++)
         {
-            printInfo[i] = IntRect(functions[i], functionsExactValues[i], eps, functionsNames[i]);
+            printInfo[i].i_sum = IntRect(functions[i], eps, n);
+            printInfo[i].n = n;
         }
         eps *= 0.1;
         printInfoBeforeTable(textRect, eps);
@@ -24,7 +32,9 @@ int main() {
     while (eps > 0.000001) {
        for (size_t i = 0; i < printInfoSize; i++)
         {
-            printInfo[i] = IntRect(functions[i], functionsExactValues[i], eps, functionsNames[i]);
+            
+            printInfo[i].i_sum = IntTrap(functions[i], eps, n);
+            printInfo[i].n = n;
         }
         eps *= 0.1;
         printInfoBeforeTable(textTrap, eps);

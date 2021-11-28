@@ -33,15 +33,11 @@ double f4ExactValue() {
     return VAL_B * atan((double)VAL_B) - VAL_A * atan((double)VAL_A) - (log(VAL_B * VAL_B + 1) - log(VAL_A * VAL_A + 1)) / 2.0;
 }
 
-I_print IntRect(TPF funq, TPFEV exFunq, double eps, char *functionName) {
-    I_print result = {};
-    result.name = functionName;
-    result.i_toch = exFunq();
-
+double IntRect(TPF funq, double eps, int& n) {
     double delX = (VAL_B - VAL_A) / 2.0;
     double x;
     double f1, f2, s1, s2;
-    int n = 2;
+    n = 2;
     do {
         x = VAL_A;
         s1 = 0;
@@ -56,19 +52,14 @@ I_print IntRect(TPF funq, TPFEV exFunq, double eps, char *functionName) {
         delX /= 2.0;
         n *= 2;
     } while (fabs(s2 - s1) > eps);
-    result.i_sum = s2;
-    result.n = n;
-    return result;
+    return s2;
 }
 
-I_print IntTrap(TPF funq, TPFEV exFunq, double eps, char *functionName) {
-    I_print result = {};
-    result.name = functionName;
-    result.i_toch = exFunq();
+double IntTrap(TPF funq, double eps, int& n) {
     double delX = (double) VAL_B - VAL_A;
     double x;
     double s1 = ((funq(VAL_A) + funq(VAL_B)) / 2) * (VAL_B - VAL_A), s2 = s1;
-    int n = 1;
+    n = 1;
     do {
         x = VAL_A;
         s1 = s2;
@@ -80,10 +71,10 @@ I_print IntTrap(TPF funq, TPFEV exFunq, double eps, char *functionName) {
             x += delX;
         }
     } while (fabs(s2 - s1) > eps);
-    result.i_sum = s2;
-    result.n = n / 2;
 
-    return result;
+    n/=2;
+
+    return s2;
 }
 
 void printInfoBeforeTable(const char *text, double eps) {

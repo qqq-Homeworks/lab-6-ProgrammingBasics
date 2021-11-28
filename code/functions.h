@@ -34,9 +34,9 @@ void printInfoBeforeTable(const char*, double);
 
 void PrintTabl(I_print i_prn[], int k);
 
-I_print IntRect(TPF, TPFEV,  double, char *);
+double IntRect(TPF, double, int&);
 
-I_print IntTrap(TPF, TPFEV, double, char *);
+double IntTrap(TPF, double, int&);
 
 double f1ExactValue();
 
